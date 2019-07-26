@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- bootstrap  -->
+	<!-- <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- icon -->
+	<!-- <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">  -->
+	<link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:bold,black,medium, bolditalic&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Bonbon|Geostar|Roboto&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+
+	<style type="text/css">
+
+.in{
+	/* background-color:white; */
+			border-radius:5px;
+			/* border: 1px solid #f3f3f3; */
+			background-color:#f3f3f3;
+			border:1px solid #EEEEEE;
+
+}
+#Test
+{
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap; /* Thanks to Herb Caudill comment */
+	font-size:10px;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+button: focus{
+	outline:0!important;
+}
+		glyphicon{
+			font-size: 21.3;
+		}
+		#header {
+			/*background-color: #7a9e9f;*/
+			/*background-color: white;*/
+			/*padding: 35px;*/
+			/*font-size: 30px;*/
+			/*font-weight: bold;*/
+			text-align: left;
+			color: (0,0,0,.6);
+			/*color:black;*/
+			font-size:21.3px;
+			font-family: 'Roboto', sans-serif!important;
+			font-weight:bold;
+			
+			
+			padding-bottom:10px;
+
+		
+		}
+		#illustrationContainer{
+			visibility: hidden;
+			height:0;
+
+		}
+		#rect{
+			width:500px;
+			height:100px;
+			background-color:#C39BD3;
+			/* background-color: rgb(97, 197, 14); */
+		}
+		h4{
+			font-family: 'Roboto', sans-serif;
+		}
+		.butt{
+			background-color:white;
+			border-radius:5px;
+			border: 1px solid #EEEEEE;
+			font-family: 'Roboto', medium, sans-serif!important;
+		}
+		.in_title{
+			font-family: 'Roboto', medium, sans-serif!important;
+		}
+		.in{
+			font-family: 'Roboto', medium, sans-serif!important;
+			
+		}
+		.in:focus{
+			outline:0!important;
+		}
+		.butt:active {
+    		/* border: none!important; */
+			background-color:#f3f3f3;
+			outline:none!important;
+		}
+		.butt:focus {
+    		/* border: none!important; */
+			outline:none!important;
+		}
+		
+		#cvs{
+			border: 1px solid #D0D0D0;
+			border-radius:5px;
+		}
+		#log{
+			margin-top: 300px!important;
+			margin-left: 15px;
+			margin-right:15px;
+			visibility: hidden;
+		}
+		#rect_metrics{
+			font-family: 'Roboto', medium, sans-serif!important;
+			
+		}
+		.glyphicon{
+			color:rgb(61, 178, 250);
+		}
+    </style>
+
+	<script type="text/javascript" src="./fontsizer.js">	</script>
+
+</head>
+<body>
+	<div id = "main" class="container-fluid"> 
+
+
+		
+		<canvas id="cvs" width="400" height="200" style="position: absolute; left: 35%; top: 150px;" ></canvas>
+		<div id = "rect_metrics" style = "position: absolute; left: 40%; top: 360px;"><span class="glyphicon glyphicon-pencil"></span> element height: 0px, element width: 0px</div>
+		<hr>
+			
+
+		<div id = "header"> 
+			<span class="glyphicon glyphicon-comment"></span>  FontSizer</div>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Font Name</div>
+			<input style="display: inline-block; vertical-align: middle;" class = "in" value="Comic Sans MS"></input>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Font Size</div>
+			<input  style="display: inline-block; vertical-align: middle;" class = "in" value="40px" size=8></input>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Letter</div>
+			<input style="display: inline-block; vertical-align: middle;" class = "in" value="e" size=8></input>
+			
+			
+			<button style="display: inline-block; vertical-align: middle;" class='butt' onclick="getMetrics()">
+			  <strong>Draw Letter</strong>
+			</button> 
+		
+		 
+		  
+		  
+		  <!-- <canvas id="cvs" width="200" height="200" style="border:1px solid black" ></canvas> -->
+
+
+		 
+		  <!-- <canvas id="canvas" width="800" height="650" style="border:1px solid black" ></canvas> -->
+
+		  <!-- <button style="display: inline-block; vertical-align: middle;" class='butt' onclick="makeCanvas()">
+			<strong>Make Rectange</strong>
+          </button> -->
+          <!-- <button class='butt' onclick="returnSquMetrics()">
+			<strong>Get Square Metrics</strong>
+		  </button> -->
+		  <!-- onclick="storeGuess(event)" -->
+		  <div id="Test">
+			x
+		</div>
+	</div>
+	
+		<pre id="log"></pre>
+		<div id="illustrationContainer"></div>
+	
+		
+</body>
+</html>
