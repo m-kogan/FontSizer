@@ -154,7 +154,7 @@ function getMetrics() {
   /**
    * The new text metrics function
    */
-  CanvasRenderingContext2D.prototype.measureText = function(textstring) {
+  CanvasRenderingContext2D.prototype.measureText1 = function(textstring) {
 
     
   
@@ -300,11 +300,11 @@ function getMetrics() {
   context.font = [fontSize, fontName].join(' ');
   context.clearRect(0, 0, canvas.width, canvas.height);
   // draw bounding box and text
-  var inputHeight = context.measureText(testtext).height;
+  var inputHeight = context.measureText1(testtext).height;
 
-  var xHeight = context.measureText("x").height;
-  var capHeight = context.measureText("H").height;
-  var metrics = context.measureText("Sxy");
+  var xHeight = context.measureText1("x").height;
+  var capHeight = context.measureText1("H").height;
+  var metrics = context.measureText1("Sxy");
   var xStart = (w - metrics.width)/2;
   context.fontFamily = fontName;
    context.fillStyle = "white";

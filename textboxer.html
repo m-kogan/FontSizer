@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- bootstrap  -->
+	<!-- <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- icon -->
+	<!-- <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">  -->
+	<link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:bold,black,medium, bolditalic&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Bonbon|Geostar|Roboto&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+      <script type="text/javascript" src="./fabric.js">	</script>
+
+	<style type="text/css">
+
+.in{
+	/* background-color:white; */
+			border-radius:5px;
+			/* border: 1px solid #f3f3f3; */
+			background-color:#f3f3f3;
+			border:1px solid #EEEEEE;
+
+}
+#Test
+{
+    position: absolute;
+    visibility: visible;
+    height: auto;
+    width: auto;
+    white-space: nowrap; /* Thanks to Herb Caudill comment */
+	font-size:10px;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+button: focus{
+	outline:0!important;
+}
+		glyphicon{
+			font-size: 21.3;
+		}
+		#header {
+			/*background-color: #7a9e9f;*/
+			/*background-color: white;*/
+			/*padding: 35px;*/
+			/*font-size: 30px;*/
+			/*font-weight: bold;*/
+			text-align: left;
+			color: (0,0,0,.6);
+			/*color:black;*/
+			font-size:21.3px;
+			font-family: 'Roboto', sans-serif!important;
+			font-weight:bold;
+			
+			
+			padding-bottom:10px;
+
+		
+		}
+		#illustrationContainer{
+			visibility: hidden;
+			height:0;
+
+		}
+		#rect{
+			width:500px;
+			height:100px;
+			background-color:#C39BD3;
+			/* background-color: rgb(97, 197, 14); */
+		}
+		h4{
+			font-family: 'Roboto', sans-serif;
+		}
+		.butt{
+			background-color:white;
+			border-radius:5px;
+			border: 1px solid #EEEEEE;
+			font-family: 'Roboto', medium, sans-serif!important;
+		}
+		.in_title{
+			font-family: 'Roboto', medium, sans-serif!important;
+		}
+		.in{
+			font-family: 'Roboto', medium, sans-serif!important;
+			
+		}
+		.in:focus{
+			outline:0!important;
+		}
+        .word_canvas{
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+		.butt:active {
+    		/* border: none!important; */
+			background-color:#f3f3f3;
+			outline:none!important;
+		}
+		.butt:focus {
+    		/* border: none!important; */
+			outline:none!important;
+		}
+		
+		#cvs{
+			border: 1px solid #D0D0D0;
+			border-radius:5px;
+		}
+		#log{
+			margin-top: 300px!important;
+			margin-left: 15px;
+			margin-right:15px;
+			visibility: hidden;
+		}
+		#rect_metrics{
+			font-family: 'Roboto', medium, sans-serif!important;
+			
+		}
+		.glyphicon{
+			color:rgb(61, 178, 250);
+		}
+    </style>
+
+    <script type="text/javascript" src="./fontsizer.js">	</script>
+    <script type="text/javascript" >
+    
+    function make_canvas_w_random_id() {
+    var random_id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+   
+    new_canvas = $("<canvas class='word_canvas'>")
+    var canvas_div = $("<div>")
+    $(canvas_div).append(new_canvas)
+    $(canvas_div).attr('id', 'container_' +random_id)
+    $("#canvas_container").append(canvas_div)
+    $("#canvas_container").append('<br>')
+
+    $(new_canvas).attr('id',random_id)
+    $(new_canvas).data('font_val', "Helvetica,sans-serif")
+    $(new_canvas).data('font_id', 'font_0')
+    canvas_ids.push(random_id)
+    canvas_fabr = new fabric.Canvas(random_id)
+    canvas_fabr.setHeight(400);
+    canvas_fabr.setWidth(800);
+    canvas_fabr.id = random_id
+    canvas_fabr.on('mouse:down',(function(){
+        console.log('clicked on canvas!')
+        console.log(this)
+        console.log(this.id)
+        var font_id = $("#"+ this.id).data('font_id')
+        console.log(font_id)
+        // $('.font_display').removeClass('selected_font')
+        // $("#" + font_id).addClass('selected_font')
+        // if (active_canvas != NaN)
+        //     $("#" + active_canvas.id).removeClass('active_canvas')
+        // $("#" + this.id).addClass('active_canvas')
+        // active_canvas = this
+    }))
+    return canvas_fabr
+}
+
+var text_1 
+function populate_canvas_for_word_letter(canvas_fabr, word, img_obj, letter, size) {
+    //split the string
+    var letter_index = word.indexOf(letter)
+    var split_word_1 = word.slice(0, letter_index)
+    var split_word_2 = word.slice(letter_index+1)
+    console.log(split_word_1)
+    console.log(split_word_2)
+    
+    //make the text boxes
+    //text_1 = new fabric.Textbox(split_word_1, {
+        text_1 = new fabric.IText(split_word_1, {
+        //width:250,
+        fontFamily: "Times New Roman", //"Brush Script MT,cursive",//"Papyrus",
+        cursorColor :"blue",
+        top:0,
+        left:0,
+        fontSize: size
+        // aCoords.bl.point.x: 0,
+        // hasBorders:false,
+        // noScaleCache:true
+
+
+        // aCoords: bl: Point {x: 0, y: 0}, br: Point {x: 0, y: 0}, tl: Point {x: 0, y: 0}, tr: Point {x: 0, y: 0}
+    });
+    
+    console.log('logging text 1')
+    console.log(text_1)
+    
+    
+// override this to get always full line height
+fabric.Text.prototype.calcTextHeight = function() {
+      var lineHeight, height = 0;
+      for (var i = 0, len = this._textLines.length; i < len; i++) {
+        lineHeight = this.getHeightOfLine(i);
+        height += lineHeight;
+      }
+      return height;
+    };
+
+
+    canvas_fabr.add(text_1);
+
+    var rect =  new fabric.Rect({
+        fill:'red',
+        height: text_1.calcTextHeight(), //131,
+        width: 20,
+    })
+    var rect2 =  new fabric.Rect({
+        fill:'blue',
+        height: (text_1.calcTextHeight())/(text_1.lineHeight), //131,
+        width: 20,
+    })
+    canvas_fabr.add(rect2)
+
+    canvas_fabr.add(rect)
+    
+
+    console.log("text_1.calcTextHeight() " + size)
+    console.log(text_1.calcTextHeight()) // Lydia thinks this could be the line-height
+    //console.log(text_1.lineHeight) 1.16
+    console.log(text_1._charBounds)
+    //now we need to know the 
+
+
+
+
+
+    //console.log(text_1.getHeightOfChar(0,0))
+    var img_src = '../static/images/';
+
+    if (img_obj['selected_file_name']!= ""){
+        img_src += img_obj['selected_file_name']
+    }else if (img_obj['extracted_file_name'] != "") {
+        img_src += img_obj['extracted_file_name']
+    } else {
+        img_src += img_obj['file_name']
+    }
+    var img = $("<img>")
+    $(img).attr('src', img_src)
+    
+    
+    //add the image
+    // fabric.Image.fromURL(img_src, function(myImg) {
+    //     myImg.id = img_obj['imgID']
+    //     console.log('logging img id')
+    //     console.log(myImg.id)
+    //     // canvas_fabr.add(myImg);
+    //     //so the image is always at the back and text is in the front
+    //     canvas_fabr.insertAt(myImg, 0) 
+    //     myImg.set({
+    //         left: text_1.left + text_1.width,
+    //         top : 30
+    //     })
+    //         // myImg.scaleToWidth(text_1.width)
+    //     myImg.scaleToHeight(text_1.height)
+    //     myImg.setCoords()
+    //     console.log(myImg)
+    //     var img_width = myImg.width * myImg.scaleX  
+        
+    //     //add second text box
+    //     var text_2 = new fabric.Textbox(split_word_2, {
+    //         //width:250,
+    //         fontFamily: "Helvetica,sans-serif",
+    //         cursorColor :"blue",
+    //         top:20,
+    //         left:20 + text_1.width + img_ 
+
+
+    return canvas_fabr
+    }
+
+    $(document).ready(function(){
+        canvas_ids =[]
+        var c = make_canvas_w_random_id()
+        populate_canvas_for_word_letter(c, "Apower", {}, "r", 100)
+
+        var c1 = make_canvas_w_random_id()
+        populate_canvas_for_word_letter(c1, "Apower", {}, "r", 200)
+
+
+
+    })
+    
+    
+    
+    </script>	
+
+</head>
+<body>
+	<div id = "main" class="container-fluid"> 
+
+            <div id = "canvas_container"></div>
+            
+
+
+		
+		<!-- <canvas id="cvs" width="400" height="200" style="position: absolute; left: 35%; top: 150px;" ></canvas>
+		<div id = "rect_metrics" style = "position: absolute; left: 40%; top: 360px;"><span class="glyphicon glyphicon-pencil"></span> element height: 0px, element width: 0px</div>
+		<hr>
+			
+
+		<div id = "header"> 
+			<span class="glyphicon glyphicon-comment"></span>  FontSizer</div>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Font Name</div>
+			<input style="display: inline-block; vertical-align: middle;" class = "in" value="Comic Sans MS"></input>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Font Size</div>
+			<input  style="display: inline-block; vertical-align: middle;" class = "in" value="40px" size=8></input>
+			<div style="display: inline-block; vertical-align: middle;" class = "in_title"> Letter</div>
+			<input style="display: inline-block; vertical-align: middle;" class = "in" value="e" size=8></input>
+			
+			
+			<button style="display: inline-block; vertical-align: middle;" class='butt' onclick="getMetrics()">
+			  <strong>Draw Letter</strong>
+			</button> 
+		 -->
+		 
+		  
+		  
+		  <!-- <canvas id="cvs" width="200" height="200" style="border:1px solid black" ></canvas> -->
+
+
+		 
+		  <!-- <canvas id="canvas" width="800" height="650" style="border:1px solid black" ></canvas> -->
+
+		  <!-- <button style="display: inline-block; vertical-align: middle;" class='butt' onclick="makeCanvas()">
+			<strong>Make Rectange</strong>
+          </button> -->
+          <!-- <button class='butt' onclick="returnSquMetrics()">
+			<strong>Get Square Metrics</strong>
+		  </button> -->
+		  <!-- onclick="storeGuess(event)" -->
+		  <!-- <div id="Test">
+			x -->
+		<!-- </div> -->
+	</div>
+	
+		<!-- <pre id="log"></pre> -->
+		<!-- <div id="illustrationContainer"></div> -->
+	
+		
+</body>
+</html>
